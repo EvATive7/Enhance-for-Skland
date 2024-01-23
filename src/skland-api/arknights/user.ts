@@ -1,15 +1,13 @@
 import axios from 'axios';
-import {Player} from './index';
-import {SklandResponseBody} from '../index';
+import { Player } from './index';
+import { SklandResponseBody } from '../index';
+import { fetch } from '../util';
 
 export const queryArknightsRole = async (cred: string, uid: string | number) => {
     const config = {
         url: '/api/v1/game/player/info',
-        params: {uid},
-        headers: {cred}
+        params: { uid },
     };
 
-    const {data: {data}} = await axios<SklandResponseBody<Player>>(config);
-    console.log(data);
-    return data;
+    return await fetch<Player>(cred, config)
 };

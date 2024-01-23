@@ -30,7 +30,7 @@ const SklandCredLoginView = () => {
     const [lastLogin, setLastLogin] = useState<LocalUser>();
 
     const checkCred = async () => {
-        if (cred.length !== 32) return;
+        //if (cred.length !== 32) return;
         setChecking(true);
         setUser(undefined);
         try {
@@ -64,7 +64,7 @@ const SklandCredLoginView = () => {
     };
 
     useEffect(() => {
-        setDisabled(cred.length !== 32);
+        //setDisabled(cred.length !== 32);
     }, [cred]);
 
     useMountEffect(() => {
@@ -147,8 +147,8 @@ const SklandCredLoginView = () => {
                         <>
                             <div className='text-sm'>输入凭据</div>
                             <div className='p-inputgroup'>
-                                <InputText value={cred} onChange={e => setCred(e.target.value)} keyfilter={/\w/}
-                                           type='password' maxLength={32} readOnly={checking}/>
+                                <InputText value={cred} onChange={e => setCred(e.target.value)} 
+                                           type='text' />
                                 <Button icon={<AngleDoubleRightIcon/>} loading={checking} onClick={checkCred}
                                         disabled={disabled}/>
                             </div>
